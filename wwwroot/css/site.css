@@ -1,0 +1,146 @@
+﻿.btn.btn-custom-lg,
+.btn.btn-custom-sm,
+.btn.btn-custom-xs {
+    border-radius: 0;
+}
+/*Global*/
+
+.btn.btn-square {
+    border-radius: 0;
+}
+
+
+
+panel-title {
+    text-align: center;
+}
+
+ul.login {
+    margin: 0;
+    width: 600px;
+    height: 60px;
+    list-style: none !important;
+}
+
+    ul.login li {
+        display: inline;
+        color: red;
+    }
+
+
+.bg-purple{
+    color: #fff;
+    background-color: olivedrab;
+}
+
+.bg-red {
+    
+    color: #fff;
+    background-color: #005BCA;
+        
+}
+
+
+.row rowBlue {
+    color: Red!important;
+}
+card-login {
+    width: 800px;
+    display: block;
+}
+
+.labelLogin {
+    color: Red ;
+}
+
+
+.holder {
+    width: auto;
+    text-align:center;
+    display: inline-block;
+}
+
+.holderlogo {
+    width: 1000px;
+    text-align: center;
+    display: inline-block;
+}
+.holder img {
+    
+    height: 75px;
+    object-fit:fill;
+}
+
+
+.loginwidth {
+    min-width: 250px;
+}
+.bg {
+    background-image: url(../img/imagen-ciudad_F.jpg);
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    overflow: auto;
+}
+
+
+.main-wrapper {
+    min-height: 100vh;
+}
+.flex-fill {
+    flex: 1 1 auto;
+}
+
+
+#g-recaptcha-response {
+    display: block !important;
+    position: absolute;
+    margin: -78px 0 0 0 !important;
+    width: 302px !important;
+    height: 76px !important;
+    z-index: -999999;
+    opacity: 0;
+}
+
+
+
+.bg-body {
+    /*background-color: #E5EFFA !important;*/
+    background-color: transparent;
+    vertical-align:central;
+}
+
+.buttonHalf{
+
+width:50%;
+}
+
+
+
+.bootstrap-container *,
+.bootstrap-container body,
+.bootstrap-container td,
+.bootstrap-container tr,
+.bootstrap-container div,
+.bootstrap-container p,
+.bootstrap-container form,
+.bootstrap-container input,
+.bootstrap-container select,
+.bootstrap-container textarea,
+.bootstrap-container font {
+    font-family: 'Work Sans', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+.h-100 {
+    /*border: 1px dotted #cc2222;*/
+}
+.navbar > img {
+    height: 50px;
+    /* put value of image height as your need */
+    float: left;
+    margin-right: 7px;
+}

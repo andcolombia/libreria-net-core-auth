@@ -1,0 +1,52 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+}
+else
+{
+    <h1>No autenticado</h1>
+}
+
+
+<!--form asp-area="Identity" asp-page="/Account/ExternalLogin" asp-page-handler="Challenge" asp-route-provider="oidc" asp-route-returnUrl="@Model.Input.ReturnUrl" id="Form1" method="get"-->
+<form asp-page-handler="Challenge" id="Form2" method="post">
+    <div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+
+            <h1>Usuario: @User.Identity.Name</h1>
+            <div>
+                <dl>
+                    @if (Model.Input.idToken != null)
+                    {
+                        <dt>id_token</dt>
+                        <dd>@Model.Input.idToken</dd>
+                    }
+                    @foreach (var claim in User.Claims)
+                    {
+                        <dt>@claim.Type</dt>
+                        <dd>@claim.Value</dd>
+                    }
+                </dl>
+            </div>
+            <a   asp-page-handler="LogoutExternal" class="nav-link">Logout</a>
+
+        }
+        else
+        {
+
+          
+
+
+        }
+
+
+    </div>
+</form>

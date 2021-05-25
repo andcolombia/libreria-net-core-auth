@@ -1,0 +1,113 @@
+﻿@page "{handler?}"
+@model EntidadClient.Pages.LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+
+
+<div class="row">
+    <div class="card mx-auto ">
+        <div class="card-header  text-center">
+            <h2>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <span>
+                        Inicio de sesión
+                    </span>
+                }
+                <br />
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="card-group">
+                <div class="card">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-page-handler="LogoutExternal" class="btn-primary">Cerrar sesión</a>
+                    }
+                    else
+                    {
+                        <section>
+
+                            <hr />
+                            @{
+                                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                                {
+                                    <div>
+                                        <p>
+                                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                            for details on setting up this ASP.NET application to support logging in via external services.
+                                        </p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <form id="external-account" asp-route-retUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                                        <!--form id="external-account" asp-area="Identity" asp-page="/Account/ExternalLogin" asp-page-handler="Challenge" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal"!-->
+
+
+                                        <div>
+
+                                            <p>
+
+                                                <br />
+                                                <table class="table">
+                             
+                                                    <tr>
+                                                        <td>
+                                                            <label>acr_values</label>
+                                                        </td>
+                                                        <td>
+                                                            <input asp-for="@Model.Input.Idp" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+
+                                                @foreach (var provider in Model.ExternalLogins)
+                                                {
+                                                    <button type="submit" asp-page-handler="Challenge" class="btn btn-round btn-primary" name="prov" value="@provider.Name"
+                                                            title="Ingrese a @provider.DisplayName account">
+                                                        Entrar
+                                                    </button>
+                                                }
+
+                                            </p>
+                                        </div>
+                                        <br />
+
+                                    </form>
+                                }
+                            }
+                        </section>
+                    }
+
+
+                </div>
+
+
+            </div>
+
+            <br />
+
+        </div>
+
+
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+
+        $(document).ready(function () {
+
+
+        });
+
+
+
+    </script>
+}

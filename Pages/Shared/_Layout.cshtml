@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Entidad del Estado</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link href="https://cdn.www.gov.co/assets/css/styles.css" rel="stylesheet"/>
+    <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light border-bottom box-shadow mb-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <h3>Entidad del estado</h3>
+            <nav class="navbar navbar-expand-lg fixed-top navbar-govco">
+                <!--Nivel 1 - Sección de notificaciones -->
+                <!--
+        <div class="navbar-nav navbar-notifications">
+            <div class="alert alert-warning">
+                <div class="container p-0">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><i class="material-icons page-icon-close">clear</i></span>
+                    </button>
+                    <a href="/inicio#textarea-escribe-aqui-tu-opinion">
+                        <strong class="page-alert-text">
+                            Estamos construyendo este espacio para ti y tu opinión nos ayuda a crecer
+                        </strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+            -->
+                <!--Nivel 2 - Sección de navegación -->
+                <div class="navbar-container">
+                    <div class="navbar-logo float-left">
+                        <a class="navbar-brand" href="http://190.60.233.154/">
+                            <img src="https://cdn.www.gov.co/assets/images/logo.png" width="auto" height="30" alt="Logo Gov.co">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapsible" aria-controls="navbarCollapsible" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                        <ul class="navbar-nav mr-auto">
+                        </ul>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            <div class="nav-item dropdown mr-0">
+
+
+                                <a class="nav-item dropdown-toggle mr-3 mr-lg-0 text-white" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @User.Identity.Name
+                                    <i class="fa fa-user"></i><span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+                                    <form id="personalizacionform" method="post" class="form-horizontal">
+
+                                        <button type="submit" asp-page="Login" asp-page-handler="Personalizacion"
+                                                class="dropdown-item btn btn-round btn-link "
+                                                name="prov" value="oidc"
+                                                title="Personalización">
+                                            Personalización
+                                        </button>
+                                    </form>
+
+
+                                    <a asp-page="Logout" asp-page-handler="LogoutExternal" class="dropdown-item btn btn-round btn-info ">
+                                        Cerrar sesión
+                                    </a>
+
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <form id="loginform" method="post" class="form-horizontal">
+
+                                @*<button type="submit" asp-page="Login" asp-page-handler="Challenge" class="btn btn-round btn-primary" name="prov" value="oidc"
+                                        title="Iniciar sesión">
+                                    Iniciar sesión
+                                </button>*@
+
+                            </form>
+
+                        }
+                    </div>
+
+                    @*<div class="collapse navbar-collapse navbar-first-menu float-right">
+            <div class="nav-primary">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Trámites y servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.gov.co/participacion">Participación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.gov.co/informacion">Entidades</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-item-primary">
+                <div class="form-inline form-search-bar my-2 my-lg-0">
+                    <input class="form-control input-govco mr-sm-2 search-navbar"
+                           type="search"
+                           placeholder="Buscar"
+                           aria-label="Search"
+                           name="searchTerm"
+                           id="searchTerm">
+                    <span class="govco-icon govco-icon-search-n"></span>
+                </div>
+                <span class="govco-icon govco-icon-language-en-n lang-govco ml-3 mr-0"></span>
+            </div>
+        </div>*@
+                </div>
+                <!--Nivel 3 - Sección de menú flotante-->
+                @*<div class="nav-secondary govco-content" id="nav-secondary">
+                <div class="container">
+                    <div class="collapse navbar-collapse navbar-first-menu">
+                        <ul class="navbar-nav ml-auto mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Trámites y servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.gov.co/participacion">Participación</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.gov.co/informacion">Entidades</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>*@
+            </nav>
+
+         </nav>
+
+    </header>
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - Entidad del estado 
+        </div>
+    </footer>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
